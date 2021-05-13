@@ -1,0 +1,51 @@
+<?php
+    $answers = $block->getAnswers();
+    $questions = $block->getQuestions();
+    $id = $block->getIddata();
+    $tempQuestion;
+    foreach ($questions as $question){
+        if($id == $question['question_id']){
+            $tempQuestion = $question['question'];
+        }
+    }
+?>
+
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Question ID</th>
+    <th>Question</th>
+    <th>Name</th>
+    <th>Answer</th>
+  </tr>
+  <?php foreach ($answers as $answer) : ?>
+    <?php if($answer['question_id'] == $id) : ?>
+    <tr>
+        <td><?php echo $answer['answer_id'] ?></td>
+        <td><?php echo $answer['question_id'] ?></td>
+        <td><?php echo $tempQuestion ?></td>
+        <td><?php echo $answer['user_name'] ?></td>
+        <td><?php echo $answer['answer_customer'] ?></td>
+    </tr>
+    <?php endif; ?>
+  <?php endforeach; ?>
+ 
+</table>
+
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
